@@ -135,32 +135,34 @@
   text-decoration: none;
 }
 
+/* LOGO MÁS GRANDE Y ESTIRADO */
 .logo-img {
-  width: 45px;
-  height: 45px;
-  object-fit: contain; /* Mantiene proporciones */
-  border-radius: 8px;
-  
+  width: 70px;        /* ← Antes 45px, ahora 60px */
+  height: 70px;       /* ← Cuadrado perfecto */
+  object-fit: contain; /* ← Mantiene proporción, NO distorsiona */
+  border-radius: 12px; /* ← Más redondo */
+  box-shadow: 0 4px 16px rgba(83, 126, 117, 0.25); /* ← Sombra más fuerte */
+  transition: all 0.3s ease; /* ← Suave */
 }
 
-
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--verde-primario);
-  letter-spacing: -0.5px;
+.logo-img:hover {
+  transform: scale(1.08);      /* ← Más zoom hover */
+  box-shadow: 0 8px 24px rgba(83, 126, 117, 0.4);
 }
 
-/* Responsive */
+/* Móvil - sigue visible */
 @media (max-width: 768px) {
   .logo-img {
-    width: 70px;
-    height: 110px;
+    width: 50px;     /* ← 40px → 50px */
+    height: 50px;
   }
-  
-  .logo-text {
-    font-size: 1.3rem;
-  }
+}
+
+/* Texto logo más grande */
+.logo-text {
+  font-size: 1.6rem !important; /* ← Más grande */
+  letter-spacing: -0.02em;
+}
   
   nav {
     gap: 1rem;
