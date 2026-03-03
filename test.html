@@ -603,58 +603,61 @@
   }
 }
 
-/* GOOGLE TRANSLATE - ESTILO PRO */
+/* GOOGLE TRANSLATE - LIMPIO Y ELEGANTE */
 #google_translate_element {
-  margin-left: auto;
-  font-size: 0.85rem;
+  margin-left: 10px;
 }
 
-/* Ocultar barra superior Google */
+/* ❌ OCULTAR TODO lo feo de Google */
+.goog-te-banner-frame,
 .goog-te-banner-frame.skiptranslate,
+.goog-te-menu-value,
 .goog-te-gadget .goog-logo-link,
-.goog-te-gadget-icon {
+.goog-te-gadget-icon,
+.goog-text-highlight,
+span.goog-te-menu-value span[lang],
+body .goog-te-menu-value {
   display: none !important;
 }
 
-/* Selector principal */
-.goog-te-gadget {
-  font-family: 'Inter', sans-serif !important;
+/* ✅ Selector dropdown SOLO */
+.goog-te-combo {
   background: var(--blanco) !important;
   border: 1px solid var(--verde-primario) !important;
   border-radius: 25px !important;
-  padding: 4px !important;
-  box-shadow: 0 2px 8px rgba(83, 126, 117, 0.15) !important;
+  padding: 6px 12px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  color: var(--verde-oscuro) !important;
+  min-width: 110px !important;
+  box-shadow: 0 2px 8px rgba(83, 126, 117, 0.1) !important;
+  cursor: pointer !important;
   transition: all 0.3s !important;
 }
 
-.goog-te-gadget:hover {
-  box-shadow: 0 4px 12px rgba(83, 126, 117, 0.25) !important;
-  transform: translateY(-1px);
+.goog-te-combo:hover {
+  background: var(--verde-primario) !important;
+  color: var(--blanco) !important;
+  box-shadow: 0 4px 12px rgba(83, 126, 117, 0.3) !important;
 }
 
-/* Dropdown interno */
-.goog-te-combo {
-  margin: 0 !important;
-  border: none !important;
-  background: transparent !important;
-  color: var(--verde-oscuro) !important;
-  font-weight: 500 !important;
-  font-size: 0.9rem !important;
-  padding: 0.5rem 1rem !important;
-  min-width: 120px !important;
+/* Dropdown abierto */
+.goog-te-menu-frame .goog-te-menu-item {
+  font-family: 'Inter', sans-serif !important;
+  color: var(--gris-oscuro) !important;
 }
 
-/* Tooltip al traducir */
-.goog-text-highlight {
+.goog-te-menu-frame .goog-te-menu-item:hover {
   background: var(--verde-claro) !important;
-  box-shadow: none !important;
 }
 
 /* Móvil */
 @media (max-width: 768px) {
-  .goog-te-gadget {
-    border-radius: 20px !important;
+  .goog-te-combo {
     font-size: 0.8rem !important;
+    padding: 4px 8px !important;
+    min-width: 90px !important;
   }
 }
   </style>
