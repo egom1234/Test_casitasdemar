@@ -985,68 +985,31 @@ document.addEventListener('click', (e) => {
 });
 </script>
 <script>
-const traducciones = {
-  es: {
-    // Hero PRINCIPAL
-    '.hero h1': "Casas Turísticas del Mediterraneo",
-    '.hero p': "Alquiler vacacional directo sin comisiones...",
-    '.cta-btn': "Explorar alojamientos",
-    
-    // Hero INDIVIDUAL (tu página Tarifa)
-    '.hero .property-title': "Tarifa - Apartamento",
-    '.hero .property-location': "📍 Tarifa, Cádiz",
-    
-    // Secciones generales
-    '[id="apartamentos"] h2': "Destinos",
-    '[id="contacto"] h2': "Contacto"
-  },
-  en: {
-    '.hero h1': "Mediterranean Tourist Houses",
-    '.hero p': "Direct vacation rental no commissions...",
-    '.cta-btn': "Explore accommodations",
-    
-    '.hero .property-title': "Tarifa Apartment Rates",
-    '.hero .property-location': "📍 Tarifa, Cádiz",
-    
-    '[id="apartamentos"] h2': "Destinations",
-    '[id="contacto"] h2': "Contact"
-  }
-};
-
 function cambiarIdioma() {
   const idioma = document.getElementById('langSelect').value;
   
-  // Cambia TODOS los textos encontrados
-  for (let selector in traducciones[idioma]) {
-    const elemento = document.querySelector(selector);
-    if (elemento) elemento.textContent = traducciones[idioma][selector];
-  }
+  // INDEX.HTML (.hero)
+  const heroH1 = document.querySelector('.hero h1');
+  const heroP = document.querySelector('.hero p');
+  const ctaBtn = document.querySelector('.cta-btn');
   
-  localStorage.setItem('idioma', idioma);
+  if (heroH1) heroH1.textContent = idioma === 'en' ? 'Mediterranean Houses' : 'Casas Turísticas del Mediterraneo';
+  if (heroP) heroP.textContent = idioma === 'en' ? 'Direct rental no commissions' : 'Alquiler vacacional directo...';
+  if (ctaBtn) ctaBtn.textContent = idioma === 'en' ? 'Explore' : 'Explorar';
+  
+  // TARIFA.HTML (.property-hero)
+  const propTitle = document.querySelector('.property-title');
+  const propLoc = document.querySelector('.property-location');
+  
+  if (propTitle) propTitle.textContent = idioma === 'en' ? 'Tarifa Apartment' : 'Tarifa - Apartamento';
+  if (propLoc) propLoc.textContent = idioma === 'en' ? '📍 Tarifa, Cádiz' : '📍 Tarifa, Cádiz';
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
   const idioma = localStorage.getItem('idioma') || 'es';
-  if (document.getElementById('langSelect')) {
-    document.getElementById('langSelect').value = idioma;
-    cambiarIdioma();
-  }
+  document.getElementById('langSelect').value = idioma;
+  cambiarIdioma();
 });
-</script>
-<script>
-// TEST - Pulsa F12 → Console para ver resultados
-function testIdioma() {
-  console.log('=== TEST IDIOMA ===');
-  console.log('Select encontrado:', !!document.getElementById('langSelect'));
-  console.log('Hero H1:', document.querySelector('.hero h1')?.textContent);
-  console.log('Hero P:', document.querySelector('.hero p')?.textContent);
-  console.log('CTA Btn:', document.querySelector('.cta-btn')?.textContent);
-  
-  // Forzar cambio
-  document.querySelector('.hero h1').textContent = '¡TEST ENGLISH!';
-}
-
-testIdioma(); // Ejecuta al cargar
 </script>
 </body>
 </html>
