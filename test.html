@@ -1033,5 +1033,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
+<script>
+// TEST - Pulsa F12 → Console para ver resultados
+function testIdioma() {
+  console.log('=== TEST IDIOMA ===');
+  console.log('Select encontrado:', !!document.getElementById('langSelect'));
+  console.log('Hero H1:', document.querySelector('.hero h1')?.textContent);
+  console.log('Hero P:', document.querySelector('.hero p')?.textContent);
+  console.log('CTA Btn:', document.querySelector('.cta-btn')?.textContent);
+  
+  // Forzar cambio
+  document.querySelector('.hero h1').textContent = '¡TEST ENGLISH!';
+}
+
+testIdioma(); // Ejecuta al cargar
+</script>
 </body>
 </html>
