@@ -985,45 +985,53 @@ document.addEventListener('click', (e) => {
 });
 </script>
 <script>
+const traducciones = {
+  es: {
+    // Hero PRINCIPAL
+    '.hero h1': "Casas Turísticas del Mediterraneo",
+    '.hero p': "Alquiler vacacional directo sin comisiones...",
+    '.cta-btn': "Explorar alojamientos",
+    
+    // Hero INDIVIDUAL (tu página Tarifa)
+    '.property-hero .property-title': "Tarifa - Apartamento",
+    '.property-hero .property-location': "📍 Tarifa, Cádiz",
+    
+    // Secciones generales
+    '[id="apartamentos"] h2': "Destinos",
+    '[id="contacto"] h2': "Contacto"
+  },
+  en: {
+    '.hero h1': "Mediterranean Tourist Houses",
+    '.hero p': "Direct vacation rental no commissions...",
+    '.cta-btn': "Explore accommodations",
+    
+    '.property-hero .property-title': "Tarifa Apartment Rates",
+    '.property-hero .property-location': "📍 Tarifa, Cádiz",
+    
+    '[id="apartamentos"] h2': "Destinations",
+    '[id="contacto"] h2': "Contact"
+  }
+};
+
 function cambiarIdioma() {
   const idioma = document.getElementById('langSelect').value;
-  console.log('✅ Idioma:', idioma);
   
-  const traducciones = {
-    es: {
-      heroTitle: "Casas Turísticas del Mediterraneo",
-      heroDesc: "Alquiler vacacional directo sin comisiones en las mejores ubicaciones de la costa e islas baleares",
-      heroBtn: "Explorar alojamientos"
-    },
-    en: {
-      heroTitle: "Mediterranean Tourist Houses",
-      heroDesc: "Direct vacation rental no commissions in best coastal locations",
-      heroBtn: "Explore accommodations"
-    }
-  };
-  
-  // BUSCAR elementos
-  const h1 = document.querySelector('.hero h1');
-  const p = document.querySelector('.hero p');
-  const btn = document.querySelector('.cta-btn');
-  
-  console.log('H1 encontrado:', h1);
-  console.log('P encontrado:', p);
-  console.log('Btn encontrado:', btn);
-  
-  // CAMBIAR si existen
-  if (h1) h1.textContent = traducciones[idioma].heroTitle;
-  if (p) p.textContent = traducciones[idioma].heroDesc;
-  if (btn) btn.textContent = traducciones[idioma].heroBtn;
+  // Cambia TODOS los textos encontrados
+  for (let selector in traducciones[idioma]) {
+    const elemento = document.querySelector(selector);
+    if (elemento) elemento.textContent = traducciones[idioma][selector];
+  }
   
   localStorage.setItem('idioma', idioma);
 }
 
-window.onload = function() {
-  const idiomaGuardado = localStorage.getItem('idioma') || 'es';
-  document.getElementById('langSelect').value = idiomaGuardado;
-  cambiarIdioma();
-}
+document.addEventListener('DOMContentLoaded', () => {
+  const idioma = localStorage.getItem('idioma') || 'es';
+  if (document.getElementById('langSelect')) {
+    document.getElementById('langSelect').value = idioma;
+    cambiarIdioma();
+  }
+});
 </script>
 </body>
 </html>
