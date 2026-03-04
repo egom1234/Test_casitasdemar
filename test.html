@@ -32,15 +32,15 @@
       background: var(--gris-claro);
     }
 
-   header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #fff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  z-index: 1000;
-  padding: 0.5rem 0;
-}
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--blanco);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      z-index: 1000;
+      padding: 0.5rem 0;
+    }
 
     .container {
       max-width: 1200px;
@@ -49,11 +49,10 @@
     }
 
     .header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
     .logo {
       font-size: 1.5rem;
@@ -445,46 +444,53 @@
     }
     /* ===== MOBILE RESPONSIVE COMPLETO ===== */
 /* Menú hamburguesa */
-  @media (max-width: 768px) {
+    .mobile-menu-btn {
+  display: block;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--verde-primario);
+  cursor: pointer;
+  z-index: 1001;
+}
+
+@media (max-width: 768px) {
   .mobile-menu-btn {
-    display: block;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: #537e75;
-    cursor: pointer;
+    display: block !important;
+    position: absolute;
+    right: 1rem;
+    top: 1.5rem;
+  }
+
+  #main-nav {
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important;
+    width: 80vw !important;
+    max-width: 300px !important;
+    height: 100vh !important;
+    background: var(--blanco) !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    padding: 7rem 1.5rem 2rem !important;
+    transition: right 0.3s ease !important;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.2) !important;
+    z-index: 999 !important;
   }
   
-  #mainNav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
-    background: white;
-    flex-direction: column;
-    padding: 80px 30px;
-    box-shadow: -4px 0 20px rgba(0,0,0,0.2);
-    transition: right 0.3s ease;
-    z-index: 999;
+  #main-nav.active {
+    right: 0 !important;
   }
   
-  #mainNav.active {
-    right: 0;
-  }
-  
-  #mainNav a {
-    font-size: 1.2rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid #eee;
+  #main-nav a {
+    font-size: 1.2rem !important;
+    padding: 1rem 0 !important;
+    border-bottom: 1px solid var(--gris-claro) !important;
+    text-align: center !important;
+    color: var(--gris-oscuro) !important;
+    text-decoration: none !important;
   }
 }
-
-/* ESPACIO BODY */
-body {
-  padding-top: 70px;
-}
-
          nav {
         position: fixed;
         top: 0;
@@ -585,25 +591,23 @@ body {
 </head>
 <body>
    <header>
-  <div class="container">
-    <div class="header-content">
-      <a href="index.html" class="logo-link">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo-link">
         <img src="images/Logo1.png" alt="Casitas de Mar" class="logo-img">
-        <span class="logo-text">Casitas de Mar</span>
-      </a>
-      
-      <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
-      
-      <nav id="mainNav">
-        <a href="#apartamentos">Alojamientos</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-      
-      <div id="google_translate_element"></div>
+              </a>
+        <!-- HAMBURGUESA ☰ -->
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        <nav id="main-nav">          
+          <a href="index.html">Inicio</a>
+          <a href="loft_binibeca.html">Binibeca</a>
+          <a href="Casa_Gonda.html">Casa Gonda</a>          
+          <a href="Tarifa_apartamento.html">Tarifa Apt</a>
+          <a href="Tarifa_loft.html">Tarifa Loft</a>
+        </nav>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
   <main>
     <section class="property-hero">
@@ -931,13 +935,27 @@ body {
     renderCalendario();
   </script>
   <script>
-function toggleMenu() {
-  document.getElementById('mainNav').classList.toggle('active');
+function toggleMobileMenu() {
+  const nav = document.getElementById('main-nav');
+  if (nav) {
+    nav.classList.toggle('active');
+  }
 }
 
-// Cerrar al click enlace
-document.querySelectorAll('#mainNav a').forEach(a => {
-  a.onclick = () => document.getElementById('mainNav').classList.remove('active');
+// Cierra al clickar enlace
+document.querySelectorAll('#main-nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('main-nav').classList.remove('active');
+  });
+});
+
+// Cierra al clickar fuera
+document.addEventListener('click', (e) => {
+  const nav = document.getElementById('main-nav');
+  const btn = document.querySelector('.mobile-menu-btn');
+  if (nav && btn && !nav.contains(e.target) && !btn.contains(e.target)) {
+    nav.classList.remove('active');
+  }
 });
 </script>
 </body>
