@@ -51,8 +51,7 @@
     .header-content {
       display: flex;
       justify-content: space-between;
-      align-items: right;
-      text-decoration: none !important;
+      align-items: center;
     }
 
     .logo {
@@ -65,15 +64,15 @@
     nav {
       display: flex;
       gap: 2rem;
+      align-items: center;
     }
 
     nav a {
       color: var(--gris);
-      text-decoration: none !important;
+      text-decoration: none;
       font-weight: 400;
       font-size: 0.95rem;
       transition: color 0.3s;
-      display: block;
     }
 
     nav a:hover {
@@ -89,7 +88,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 .logo-img {
@@ -492,34 +491,13 @@
     color: var(--gris-oscuro) !important;
     text-decoration: none !important;
   }
-}
-         nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 300px;
-        height: 100vh;
-        background: var(--blanco);
-        flex-direction: column;
-        gap: 2rem;
-        padding: 7rem 1.5rem 2rem;
-        transition: right 0.3s ease;
-        box-shadow: -5px 0 25px rgba(0,0,0,0.2);
-        z-index: 999;
-      }
-      
-     @media (max-width: 768px) {
-  nav.active {
-    right: 0 !important;
-  }
-      }
+}      
       
       nav a {
         font-size: 1.2rem;
         padding: 1rem 0;
         border-bottom: 1px solid var(--gris-claro);
         text-align: center;
-        text-decoration: none !important;
       }
       
       /* Contacto responsive */
@@ -601,7 +579,7 @@
               </a>
         <!-- HAMBURGUESA ☰ -->
       <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
-     
+<nav id="main-nav">          
           <a href="index.html">Inicio</a>
           <a href="loft_binibeca.html">Binibeca</a>
           <a href="Casa_Gonda.html">Casa Gonda</a>          
