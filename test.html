@@ -516,7 +516,53 @@
         grid-template-columns: 1fr;
         gap: 2rem;
       }
-    
+    /* DESKTOP: lado a lado */
+@media (min-width: 769px) {
+  .booking-panel {
+    flex-direction: row;
+  }
+  
+  .contact-info {
+    flex: 1;
+    order: 1;
+  }
+  
+  .booking-form {
+    flex: 1;
+    order: 2;
+  }
+}
+
+/* MÓVIL: uno debajo otro */
+@media (max-width: 768px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+  
+  .contact-info {
+    order: 1;
+  }
+  
+  .booking-form {
+    order: 2;
+  }
+
+  .gallery-main, .gallery-item {
+    height: 200px;
+  }
+
+
+@media (max-width: 480px) {
+  .property-title {
+    font-size: 1.8rem;
+  }
+  
+  .gallery-main, .gallery-item {
+    height: 180px;
+  }
+}
   
 /* ===== LIGHTBOX ===== */
 .lightbox-overlay {
