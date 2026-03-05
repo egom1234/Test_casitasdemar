@@ -141,14 +141,13 @@
     }
 
     .gallery-main {
-  grid-column: span 2;      /* ← Ocupa 2 columnas */
-  grid-row: span 2;         /* ← Ocupa 2 filas */
-  grid-template-rows: auto auto;
-  height: 650px;            /* ← Más alto */
-  background-size: cover;
-  background-position: center;
-  border-radius: 15px;
-}
+      grid-column: span 2;
+      grid-row: span 2;
+      height: 500px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 15px;
+    }
 
     .gallery-item {
       height: 320px;
@@ -407,31 +406,29 @@
       margin-bottom: 1rem;
     }
 
-    @media (max-width: 768px) {
-  .contact-wrapper {
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
-  }
+    @media (max-width: 992px) {
+      .content-wrapper {
+        grid-template-columns: 1fr;
+      }
 
-  .contact-info {
-    order: 1;
-  }
+      .booking-panel {
+        position: static;
+      }
 
-  .booking-form {
-    order: 2;
-  }
+      .gallery {
+        grid-template-columns: 1fr;
+      }
 
-  .gallery-main {
-    grid-column: span 2;   /* ← Solo en móvil */
-    grid-row: span 1;
-    height: 400px;         /* ← Solo en móvil */
-  }
+      .gallery-main {
+        grid-column: span 1;
+        grid-row: span 1;
+        height: 300px;
+      }
 
-  .gallery-item {
-    height: 200px;         /* ← Solo en móvil */
-  }
-
-} 
+      .property-title {
+        font-size: 2.2rem;
+      }
+    }
 
     @media (max-width: 768px) {
       .features {
@@ -539,6 +536,28 @@
     order: 2;
   }
 }
+
+/* MÓVIL: uno debajo otro */
+@media (max-width: 768px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+  
+  .contact-info {
+    order: 1;
+  }
+  
+  .booking-form {
+    order: 2;
+  }
+
+  .gallery-main, .gallery-item {
+    height: 200px;
+  }
+
+
 @media (max-width: 480px) {
   .property-title {
     font-size: 1.8rem;
@@ -546,7 +565,8 @@
   
   .gallery-main, .gallery-item {
     height: 180px;
-    
+  }
+}
 /* ===== LIGHTBOX ===== */
 .lightbox-overlay {
   display: none;
