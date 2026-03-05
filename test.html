@@ -406,29 +406,31 @@
       margin-bottom: 1rem;
     }
 
-    @media (max-width: 992px) {
-      .content-wrapper {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 768px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
 
-      .booking-panel {
-        position: static;
-      }
+  .contact-info {
+    order: 1;
+  }
 
-      .gallery {
-        grid-template-columns: 1fr;
-      }
+  .booking-form {
+    order: 2;
+  }
 
-      .gallery-main {
-        grid-column: span 1;
-        grid-row: span 1;
-        height: 300px;
-      }
+  .gallery-main {
+    grid-column: span 1;   /* ← Solo en móvil */
+    grid-row: span 1;
+    height: 300px;         /* ← Solo en móvil */
+  }
 
-      .property-title {
-        font-size: 2.2rem;
-      }
-    }
+  .gallery-item {
+    height: 200px;         /* ← Solo en móvil */
+  }
+
+} 
 
     @media (max-width: 768px) {
       .features {
