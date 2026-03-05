@@ -141,8 +141,8 @@
     }
 
     .gallery-main {
-  grid-column: span 2;      /* ← Ocupa 2 columnas */
-  grid-row: span 2;         /* ← Ocupa 2 filas */
+  grid-column: span 3;      /* ← Ocupa 2 columnas */
+  grid-row: span 3;         /* ← Ocupa 2 filas */
   height: 500px;            /* ← Más alto */
   background-size: cover;
   background-position: center;
@@ -423,7 +423,7 @@
   .gallery-main {
     grid-column: span 1;   /* ← Solo en móvil */
     grid-row: span 1;
-    height: 300px;         /* ← Solo en móvil */
+    height: 400px;         /* ← Solo en móvil */
   }
 
   .gallery-item {
@@ -538,27 +538,6 @@
     order: 2;
   }
 }
-
-/* MÓVIL: uno debajo otro */
-@media (max-width: 768px) {
-  .contact-wrapper {
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
-  }
-}
-  
-  .contact-info {
-    order: 1;
-  }
-  
-  .booking-form {
-    order: 2;
-  }
-
-  .gallery-main, .gallery-item {
-    height: 200px;
-  }
-
 
 @media (max-width: 480px) {
   .property-title {
