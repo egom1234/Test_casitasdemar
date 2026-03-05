@@ -420,7 +420,7 @@
       }
 
       .gallery-main {
-        grid-column: span 1;
+        grid-column: span 2;
         grid-row: span 1;
         height: 300px;
       }
@@ -536,27 +536,6 @@
     order: 2;
   }
 }
-
-/* MÓVIL: uno debajo otro */
-@media (max-width: 768px) {
-  .contact-wrapper {
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
-  }
-}
-  
-  .contact-info {
-    order: 1;
-  }
-  
-  .booking-form {
-    order: 2;
-  }
-
-  .gallery-main, .gallery-item {
-    height: 200px;
-  }
-
 
 @media (max-width: 480px) {
   .property-title {
